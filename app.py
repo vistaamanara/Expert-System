@@ -1,11 +1,12 @@
 from flask import Flask
 from flask_pymongo import PyMongo, MongoClient
 from flask_caching import Cache
+import secrets
 
 app = Flask(__name__)
 # app.config['MONGO_URI'] = 'mongodb+srv://vista:vistasayangbangagan@cluster0.0fjmb6i.mongodb.net/'
 # mongo = PyMongo(app)
-app.secret_key = "sistempakar112023iqbal01"
+app.secret_key = secrets.token_hex(16)
 client = MongoClient("mongodb+srv://vista:vistasayangbangagan@cluster0.0fjmb6i.mongodb.net/?retryWrites=true&w=majority")
 db = client.get_database("expertsystem_database")
 pengguna = db.dataPengguna
